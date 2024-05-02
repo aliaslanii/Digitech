@@ -50,5 +50,17 @@ class UserRequest extends FormRequest
             "shabanumber" => "min:16|max:24|string"
         ];
     }
+    public function changeEmailRole(): array
+    {
+        return [
+            'email' => 'required|email|unique:users,email'
+        ];
+    }
+    public function changeMobileRole(): array
+    {
+        return [
+            'mobile' => "required|min:11|max:11|unique:users,mobile"
+        ];
+    }
     
 }

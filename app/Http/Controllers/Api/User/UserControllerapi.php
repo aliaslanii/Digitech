@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
 class UserControllerapi extends Controller
 {
     protected $UserRequest;
-    public function __construct() 
+    public function __construct()
     {
         $this->UserRequest = new UserRequest();
     }
@@ -226,9 +226,7 @@ class UserControllerapi extends Controller
     {
         try {
             $user = $request->user();
-            $Validate = Validator::make($request->all(),[
-                'mobile' => "required|min:11|max:11|unique:users,mobile"
-            ]);
+            $Validate = Validator::make($request->all(), $this->UserRequest->changeMobileRole());
             if ($Validate->fails()) {
                 return Response::json([
                     'status' => false,
@@ -270,9 +268,7 @@ class UserControllerapi extends Controller
     {
         try {
             $user = $request->user();
-            $Validate = Validator::make($request->all(),[
-                'email' => "required|email|unique:users,email"
-            ]);
+            $Validate = Validator::make($request->all(), $this->UserRequest->changeEmailRole());
             if ($Validate->fails()) {
                 return Response::json([
                     'status' => false,
