@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
-use App\Http\Controllers\Api\User\UserControllerapi;
-use Illuminate\Support\Facades\App;
+use App\Http\Controllers\Api\Home\User\UserControllerapi;
 use Illuminate\Support\Facades\Route;
 
 

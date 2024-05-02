@@ -1,11 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api\User;
+namespace App\Http\Controllers\Api\Home\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BankInformationRequest;
-use App\Http\Requests\ChangePasswordRequest;
-use App\Http\Requests\PersonalInformationRequest;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
