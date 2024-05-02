@@ -1,0 +1,384 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger with Laravel",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register a new user",
+                "operationId": "15a305cccb0e449b37cf83dd069da62e",
+                "parameters": [
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "description": "User firstName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "description": "User lastName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "User mobile",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User email",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "query",
+                        "description": "User password confirmation",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login user",
+                "operationId": "5af4433e29a0b65a26a6dde1e4cd7e46",
+                "parameters": [
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "User Mobile",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User login successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    },
+                    "401": {
+                        "description": "Login information is incorrect"
+                    }
+                }
+            }
+        },
+        "/api/auth/detail": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "detail user login",
+                "operationId": "cb93db4d4a2f32eaa6737a3003c8e541",
+                "responses": {
+                    "200": {
+                        "description": "User detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "user logout",
+                "operationId": "b5e2ebd9118be7f94ef12797bff40bb1",
+                "responses": {
+                    "200": {
+                        "description": "User Logout Successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/ChangePassword": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "ChangePassword a User",
+                "operationId": "1dc3c877dc6cb7a82e2a855eda3bd92b",
+                "parameters": [
+                    {
+                        "name": "now_password",
+                        "in": "query",
+                        "description": "User Now password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "new_password",
+                        "in": "query",
+                        "description": "User New password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "new_password_confirmation",
+                        "in": "query",
+                        "description": "User New password confirmation",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User update successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/PersonalInformation": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "show a User",
+                "operationId": "6d50a9229b39997c4ef27c3c6314e457",
+                "parameters": [
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "description": "firstName Passenger",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "description": "lastName Passenger",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nationalcode",
+                        "in": "query",
+                        "description": "nationalcode Passenger",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "gender Passenger (male,femail)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "birthday",
+                        "in": "query",
+                        "description": "birthday Passenger",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "409": {
+                        "description": "TrainTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/BankInformation": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Add bankInformation a User",
+                "operationId": "26e4db33e98fcb74e27aebe939052f25",
+                "parameters": [
+                    {
+                        "name": "shabanumber",
+                        "in": "query",
+                        "description": "User shabanumber",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cardnumber",
+                        "in": "query",
+                        "description": "User cardnumber",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add personalInformation successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/ChangeMobile": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Add mobile a User",
+                "operationId": "139fd428872e1b859031152485f36b2f",
+                "parameters": [
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "User mobile",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add personalInformation successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/ChangeEmail": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Add email a User",
+                "operationId": "8825a79453a582403ce595d89ff6c8c9",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email mobile",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add personalInformation successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
