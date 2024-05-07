@@ -3,20 +3,34 @@
 namespace App\Http\Controllers\Api\Admin\Color;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ColorRequest;
 use App\Models\Color;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class ColorController extends Controller
 {
+    protected $ColorReauest;
+
+    public function __construct()
+    {
+        $this->ColorReauest = new ColorRequest();
+    }
     /**
      * @OA\Get(
      *     path="/api/admin/Color/index",
      *     summary="index Colors",
      *     tags={"Color"},
      *     security={{"bearerAuth":{}}},
-     *     @OA\Response(response="200", description="Color index successfully"),
-     *     @OA\Response(response="403", description="Validation errors")
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data index successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
      * )
      */
     public function index()
@@ -47,8 +61,14 @@ class ColorController extends Controller
      *         required=true,
      *         @OA\Schema(type="integer")
      *     ),
-     *     @OA\Response(response="200", description="Test Color Created successfully"),
-     *     @OA\Response(response="403", description="Validation errors")
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data create successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
      * )
      */
     public function create(Request $request)
@@ -79,37 +99,27 @@ class ColorController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
-     *    @OA\Parameter(
-     *         name="description",
+     *     @OA\Parameter(
+     *         name="color",
      *         in="query",
-     *         description="description Color",
+     *         description="Code Color",
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
-     *     @OA\RequestBody(
-     *          required=true,
-     *          description="Image file to upload",
-     *          @OA\MediaType(
-     *              mediaType="multipart/form-data",
-     *              @OA\Schema(
-     *                  @OA\Property(
-     *                      property="image",
-     *                      description="image Color",
-     *                      type="string",
-     *                      format="binary"
-     *                  ),
-     *              ),
-     *          ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data store successfully",
      *      ),
-     *     @OA\Response(response="200", description="Test Color Created successfully"),
-     *     @OA\Response(response="403", description="Validation errors")
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
      * )
      */
     public function store(Request $request)
     {
         try {
-            $ColorReauest = new ColorRequest();
-            $Validator = Validator::make($request->all(),$ColorReauest->storeRules());
+            $Validator = Validator::make($request->all(), $this->ColorReauest->storeRules());
             if ($Validator->fails()) {
                 return Response::json([
                     'status' => false,
@@ -119,8 +129,7 @@ class ColorController extends Controller
             }
             $Color = new Color();
             $Color->name = $request->name;
-            $Color->description = $request->description;
-            $Color->photo_path = $this->FileTransfer->moveFile($request,$this->path);
+            $Color->color = $request->color;
             $Color->save();
             return Response::json([
                 'status' => true,
@@ -146,8 +155,14 @@ class ColorController extends Controller
      *         required=true,
      *         @OA\Schema(type="integer")
      *     ),
-     *     @OA\Response(response="200", description="Test Color Created successfully"),
-     *     @OA\Response(response="403", description="Validation errors")
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data show successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
      * )
      */
     public function show(Request $request)
@@ -178,9 +193,15 @@ class ColorController extends Controller
      *         required=true,
      *         @OA\Schema(type="integer")
      *     ),
-     *     @OA\Response(response="200", description="Test Color Created successfully"),
-     *     @OA\Response(response="403", description="Validation errors")
-     * )
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data edit successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
+     *  )
      */
     public function edit(Request $request)
     {
@@ -218,36 +239,26 @@ class ColorController extends Controller
      *         @OA\Schema(type="string")
      *     ),
      *     @OA\Parameter(
-     *         name="description",
+     *         name="color",
      *         in="query",
-     *         description="description Color",
+     *         description="Code Color",
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
-     *     @OA\RequestBody(
-     *          required=true,
-     *          description="Image file to upload",
-     *          @OA\MediaType(
-     *              mediaType="multipart/form-data",
-     *              @OA\Schema(
-     *                  @OA\Property(
-     *                      property="image",
-     *                      description="image Color",
-     *                      type="string",
-     *                      format="binary"
-     *                  ),
-     *              ),
-     *          ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data update successfully",
      *      ),
-     *     @OA\Response(response="200", description="Test Color Created successfully"),
-     *     @OA\Response(response="403", description="Validation errors")
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
      * )
      */
     public function update(Request $request)
     {
         try {
-            $ColorReauest = new ColorRequest();
-            $Validator = Validator::make($request->all(),$ColorReauest->updateRules($request->id));
+            $Validator = Validator::make($request->all(), $this->ColorReauest->updateRules($request->id));
             if ($Validator->fails()) {
                 return Response::json([
                     'status' => false,
@@ -257,8 +268,7 @@ class ColorController extends Controller
             }
             $Color = Color::find($request->id);
             $Color->name = $request->name;
-            $Color->description = $request->description;
-            $Color->photo_path = $this->FileTransfer->updateFile($Color,$request,$this->path);
+            $Color->color = $request->color;
             $Color->save();
             return Response::json([
                 'status' => true,
@@ -284,7 +294,14 @@ class ColorController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
-     *     @OA\Response(response="200", description="Color destroy successfully"),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data destroy successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
      * )
      */
     public function destroy(Request $request)
@@ -301,7 +318,7 @@ class ColorController extends Controller
                 'status' => false,
                 'message' => $th->getMessage()
             ], 500);
-        } 
+        }
     }
     /**
      * @OA\Put(
@@ -316,7 +333,14 @@ class ColorController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
-     *     @OA\Response(response="200", description="Color restore successfully"),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data restore successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
      * )
      */
     public function restore(Request $request)
