@@ -16,6 +16,9 @@ return new class extends Migration
             $table->foreignId('customer_id')->constrained();
             $table->dateTime('order_date');
             $table->double('total_price');
+            $table->string('status')->nullable();
+            $table->boolean('is_payed')->default(0);
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

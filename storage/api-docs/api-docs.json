@@ -5,6 +5,1510 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/admin/Berand/index": {
+            "get": {
+                "tags": [
+                    "Berand"
+                ],
+                "summary": "index Berands",
+                "operationId": "cc644a55546e1a5974174ce089cbe09f",
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Berand/create": {
+            "get": {
+                "tags": [
+                    "Berand"
+                ],
+                "summary": "create a Berand",
+                "operationId": "52c0a82787d0ca58500c098ff6a3e27b",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count test Berand Data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Test Berand Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Berand/store": {
+            "post": {
+                "tags": [
+                    "Berand"
+                ],
+                "summary": "create a Berand",
+                "operationId": "2db176369bc77b4ca2a6c2dd2c1fb314",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Berand",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "description Berand",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Image file to upload",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "image Berand",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Test Berand Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Berand/show": {
+            "get": {
+                "tags": [
+                    "Berand"
+                ],
+                "summary": "Show a Berand",
+                "operationId": "9fd4a90fe905dec6f1b8700a61506f5d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Berand",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "show Berand successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Berand/edit": {
+            "get": {
+                "tags": [
+                    "Berand"
+                ],
+                "summary": "Show a Berand",
+                "operationId": "204a14bf463b249c46cbce937b43a9ff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Berand",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "show Berand successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Berand/update": {
+            "post": {
+                "tags": [
+                    "Berand"
+                ],
+                "summary": "create a Berand",
+                "operationId": "10c37c9a59ee0b754d15b4a5a83373f1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Berand",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Berand",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "description Berand",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Image file to upload",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "image Berand",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Test Berand Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Berand/destroy": {
+            "delete": {
+                "tags": [
+                    "Berand"
+                ],
+                "summary": "Delete a Railcompanie",
+                "operationId": "1edb16fecdff36e43881a1efb3df417e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Berand",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Berand destroy successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Berand/restore": {
+            "put": {
+                "tags": [
+                    "Berand"
+                ],
+                "summary": "Restore a Berand",
+                "operationId": "91d9788b820090ff01cd4e74cad17bab",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Berand",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Berand restore successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Category/index": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "index Categorys",
+                "operationId": "487b62b7ee8a3ffb799e3b2ea7b89a08",
+                "responses": {
+                    "200": {
+                        "description": "Category index successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Category/create": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "create a Category",
+                "operationId": "11ec62face922ab9f69b641070b64cec",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count test Category Data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Test Category Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Category/store": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "create a Category",
+                "operationId": "8b54b339bbe5c1bbfa7738ceee45f75b",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "description Category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Image file to upload",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "image Category",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Test Category Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Category/show": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "create a Category",
+                "operationId": "973e69ed546eb57d40424c2412019bcb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Test Category Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Category/edit": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "create a Category",
+                "operationId": "771532625315ee8d52d893d803764fa5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Test Category Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Category/update": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "create a Category",
+                "operationId": "49d3bf42a69f842bf5b44d56447024b3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "description Category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Image file to upload",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "image Category",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Test Category Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Category/destroy": {
+            "delete": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Delete a Category",
+                "operationId": "0c1ddcc0b2cc36d2d0c6b65d2ffb3e9e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Category destroy successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Category/restore": {
+            "put": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Restore a Category",
+                "operationId": "1eb8fccecba34669096068c647668af9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Category restore successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Color/index": {
+            "get": {
+                "tags": [
+                    "Color"
+                ],
+                "summary": "index Colors",
+                "operationId": "ef47be45672c2ed70dc692a830a696cb",
+                "responses": {
+                    "200": {
+                        "description": "Data index successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Color/create": {
+            "get": {
+                "tags": [
+                    "Color"
+                ],
+                "summary": "create a Color",
+                "operationId": "85f3acb8e58d57a6ee6c4892dd74aedf",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count test Color Data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data create successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Color/store": {
+            "post": {
+                "tags": [
+                    "Color"
+                ],
+                "summary": "create a Color",
+                "operationId": "e55b2da94a98d87ca0f9e5932d725d05",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Color",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "description": "Code Color",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data store successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Color/show": {
+            "get": {
+                "tags": [
+                    "Color"
+                ],
+                "summary": "create a Color",
+                "operationId": "8bcee5edfa5fd3b743af18fe56cc7e42",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Color",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data show successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Color/edit": {
+            "get": {
+                "tags": [
+                    "Color"
+                ],
+                "summary": "create a Color",
+                "operationId": "d7ec143e3c5f7f23fde97e672c2a7966",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Color",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data edit successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Color/update": {
+            "post": {
+                "tags": [
+                    "Color"
+                ],
+                "summary": "create a Color",
+                "operationId": "ec5694aa1e5c906073cea932686490f5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Color",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Color",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "description": "Code Color",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data update successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Color/destroy": {
+            "delete": {
+                "tags": [
+                    "Color"
+                ],
+                "summary": "Delete a Color",
+                "operationId": "50631ac6f87576928d63d7c60040b21d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Color",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data destroy successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Color/restore": {
+            "put": {
+                "tags": [
+                    "Color"
+                ],
+                "summary": "Restore a Color",
+                "operationId": "0d33388533ebe0a1391a3c76a6467b23",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Color",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data restore successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/index": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "index Products",
+                "operationId": "eb9b4bdb0c2fa6066a0059c953bdfde9",
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/create": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "create a Product",
+                "operationId": "09032f3ac38938d02aacd6f90fbd78c0",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count test product Data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Test Product Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/store": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "create a Product",
+                "operationId": "a9cbc9037fa9d965111447e464621969",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "description Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "price Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "stock_quantity",
+                        "in": "query",
+                        "description": "stock_quantity Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "Category",
+                        "in": "query",
+                        "description": "Category Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Berand",
+                        "in": "query",
+                        "description": "Berand Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Product images",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "main_image": {
+                                        "description": "Main product image",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "additional_images[]": {
+                                        "type": "array",
+                                        "items": {
+                                            "description": "Additional product images",
+                                            "type": "string",
+                                            "format": "binary"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Test Product Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/show": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Show a Product",
+                "operationId": "6568b7df61ba95f3a1a46c3314cb7fef",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Product successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/edit": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "edit a Product",
+                "operationId": "4a5c97b6efc05441f7fc49c88aef0bb6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "edit Product successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/update": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "update a Product",
+                "operationId": "d5cbef638a738009769e9606e0f376c2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "description Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "price Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "stock_quantity",
+                        "in": "query",
+                        "description": "stock_quantity Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "Category",
+                        "in": "query",
+                        "description": "Category Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Berand",
+                        "in": "query",
+                        "description": "Berand Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Product images",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "main_image": {
+                                        "description": "Main product image",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Test Product Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/destroy": {
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Delete a Product",
+                "operationId": "94a8cb676c7e9ad7778fd25eea7c970c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product destroy successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/remove/image": {
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "remove a image Product",
+                "operationId": "18b2545eda7cef5519476ddb7ff9d76b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id image Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product remove image successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/add/image": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "update a Product",
+                "operationId": "d98e8df4626739dcf63f6ff8c93d88fc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Product images",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "additional_images[]": {
+                                        "type": "array",
+                                        "items": {
+                                            "description": "Additional product images",
+                                            "type": "string",
+                                            "format": "binary"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Test Product Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/restore": {
+            "put": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Restore a Product",
+                "operationId": "bb77782d2b04cfd22a47be390b7d46f6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product restore successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/add/Color/Price": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "add Color Price in Product",
+                "operationId": "d4851711ce4bcdb7453a59231dad3b8d",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to be updated",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "ColorPrice": {
+                                        "description": "Array of Color and Price to be updated",
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "Color": {
+                                                    "description": "id Color of the Product",
+                                                    "type": "string"
+                                                },
+                                                "Quantity": {
+                                                    "description": "Quantity Product",
+                                                    "type": "string"
+                                                },
+                                                "Price": {
+                                                    "description": "Price of the Product",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/add/Detial": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "add Detial in Product",
+                "operationId": "911e35be04d0cd6597b09a03d27e3a26",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to be updated",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "featureProducts": {
+                                        "description": "Array of Feature product",
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "title": {
+                                                    "description": "title Feature Product",
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "description": "value Feature Product",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/auth/register": {
             "post": {
                 "tags": [
@@ -162,7 +1666,7 @@
                     "User"
                 ],
                 "summary": "ChangePassword a User",
-                "operationId": "1dc3c877dc6cb7a82e2a855eda3bd92b",
+                "operationId": "a09bed86d069b9d0cf0503e484022847",
                 "parameters": [
                     {
                         "name": "now_password",
@@ -210,7 +1714,7 @@
                     "User"
                 ],
                 "summary": "show a User",
-                "operationId": "6d50a9229b39997c4ef27c3c6314e457",
+                "operationId": "463ceb75866fd7a74a0ac12e5d0cac02",
                 "parameters": [
                     {
                         "name": "firstName",
@@ -282,7 +1786,7 @@
                     "User"
                 ],
                 "summary": "Add bankInformation a User",
-                "operationId": "26e4db33e98fcb74e27aebe939052f25",
+                "operationId": "9d34fb86956bd5a21db40d405db6e513",
                 "parameters": [
                     {
                         "name": "shabanumber",
@@ -319,7 +1823,7 @@
                     "User"
                 ],
                 "summary": "Add mobile a User",
-                "operationId": "139fd428872e1b859031152485f36b2f",
+                "operationId": "3f57707fcc3aad620697ad1fc63435ee",
                 "parameters": [
                     {
                         "name": "mobile",
@@ -348,7 +1852,7 @@
                     "User"
                 ],
                 "summary": "Add email a User",
-                "operationId": "8825a79453a582403ce595d89ff6c8c9",
+                "operationId": "4f6cfd64d75c1623c8d4d18ea8cad9a6",
                 "parameters": [
                     {
                         "name": "email",

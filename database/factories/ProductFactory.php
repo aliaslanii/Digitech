@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Berand;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,12 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->company(),
+            'description' => fake()->text() ,
+            'stock_quantity' => random_int(1,200),
+            'photo_path' => fake()->imageUrl() ,
+            'categorie_id' => Category::factory(),
+            'berand_id' => Berand::factory(),
         ];
     }
 }

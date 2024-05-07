@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->double('price');
             $table->double('stock_quantity');
+            $table->string('photo_path', 2048)->nullable();
             $table->foreignId('categorie_id')->constrained();
             $table->foreignId('berand_id')->constrained();
             $table->timestamps();
