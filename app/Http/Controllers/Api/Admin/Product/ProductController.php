@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\Admin\Product;
 use App\FileTransfer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\ColorProduct;
+use App\Models\FeatureProduct;
 use App\Models\ImageProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -509,7 +511,7 @@ class ProductController extends Controller
      *     tags={"Product"},
      *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="product_id",
      *         in="query",
      *         description="id Product",
      *         required=true,
@@ -534,6 +536,11 @@ class ProductController extends Controller
      *                              description="id Color of the Product",
      *                          ),
      *                          @OA\Property(
+     *                              property="Quantity",
+     *                              type="string",
+     *                              description="Quantity Product",
+     *                          ),
+     *                          @OA\Property(
      *                              property="Price",
      *                              type="string",
      *                              description="Price of the Product",
@@ -556,11 +563,93 @@ class ProductController extends Controller
     public function addProductColorPrice(Request $request)
     {
         try {
-            $ImageProduct = ImageProduct::find($request->id);
-            File::delete($ImageProduct->photo_path);
-            $ImageProduct->delete();
+            $Product = Product::find($request->product_id);
+            foreach($request->ColorPrice as $ColorPrice)
+            {
+                $ColorProduct = new ColorProduct();
+                $ColorProduct->product_id = $request->product_id;
+                $ColorProduct->color_id = $ColorPrice['Color'];
+                $ColorProduct->price = $ColorPrice['Price'];
+                $ColorProduct->quantity = $ColorPrice['Quantity'];
+                $ColorProduct->save();
+            }
             return Response::json([
-                'status' => true
+                'status' => true,
+                'Product Detial' => $Product->ColorProduct
+            ], 200);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+    /**
+     * @OA\Post(
+     *     path="/api/admin/Product/add/Detial",
+     *     summary="add Detial in Product",
+     *     tags={"Product"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="product_id",
+     *         in="query",
+     *         description="id Product",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *    @OA\RequestBody(
+     *          required=true,
+     *          description="Data to be updated",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(
+     *                  type="object",
+     *                  @OA\Property(
+     *                      property="featureProducts",
+     *                      type="array",
+     *                      description="Array of Feature product",
+     *                      @OA\Items(
+     *                          type="object",
+     *                          @OA\Property(
+     *                              property="title",
+     *                              type="string",
+     *                              description="title Feature Product",
+     *                          ),
+     *                          @OA\Property(
+     *                              property="value",
+     *                              type="string",
+     *                              description="value Feature Product",
+     *                          ),
+     *                      ),
+     *                  ),
+     *              ),
+     *          ),
+     *      ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data updated successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
+     * )
+     */
+    public function addProductDetial(Request $request)
+    {
+        try {
+            $Product = Product::find($request->product_id);
+            foreach($request->featureProducts as $featureProduct)
+            {
+                $FeatureProduct = new FeatureProduct();
+                $FeatureProduct->product_id = $request->product_id;
+                $FeatureProduct->title = $featureProduct['title'];
+                $FeatureProduct->value = $featureProduct['value'];
+                $FeatureProduct->save();
+            }
+            return Response::json([
+                'status' => true,
+                'Product Detial' => $Product->featureProducts
             ], 200);
         } catch (\Throwable $th) {
             return Response::json([

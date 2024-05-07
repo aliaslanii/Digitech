@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('quantity')->constrained();
             $table->double('price');
             $table->timestamps();
+            
         });
     }
 
