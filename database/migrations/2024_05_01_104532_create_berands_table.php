@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('berands', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
+            $table->string('photo_path', 2048)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

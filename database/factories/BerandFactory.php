@@ -17,7 +17,9 @@ class BerandFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->company(),
+            'description' => fake()->text(),
+            'photo_path' => fake()->imageUrl()
         ];
     }
 }
