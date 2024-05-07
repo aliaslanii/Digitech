@@ -6,7 +6,6 @@ use App\Http\Controllers\Api\Admin\Color\ColorController;
 use App\Http\Controllers\Api\Admin\Product\ProductController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Home\User\UserControllerapi;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 
