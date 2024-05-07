@@ -25,6 +25,5 @@ class EnsureUserHasRole
                 'message' => "not authorized to access ".$role." Data"
             ],401);
         }
-        
     }
 }
