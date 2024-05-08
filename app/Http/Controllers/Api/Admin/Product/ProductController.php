@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\Admin\Product;
 
 use App\FileTransfer;
-use App\helper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\ColorProduct;
