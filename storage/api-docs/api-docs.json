@@ -905,6 +905,548 @@
                 ]
             }
         },
+        "/api/admin/City/index": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "index Citys",
+                "operationId": "8e0b33b5d53fbbfd084de6975671bce3",
+                "responses": {
+                    "200": {
+                        "description": "Data index successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/create": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "create a City",
+                "operationId": "8c6045f8bd725e70f2559d1105494b29",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count test City Data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data create successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/store": {
+            "post": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "create a City",
+                "operationId": "01a0bc74c84d27a7968a80eec7948b50",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "state",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data store successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/show": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "create a City",
+                "operationId": "b89003290ef968773a5d1814552c93b1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id City",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data show successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/edit": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "create a City",
+                "operationId": "89ea7aee540abc982f254828c0e1d955",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id City",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data edit successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/update": {
+            "post": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "create a City",
+                "operationId": "7bb3dca9975b6a33bdca45cc0aa3f38b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id City",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "state",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data update successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/destroy": {
+            "delete": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Delete a City",
+                "operationId": "aad83c4e4f1c706daf7d0f27df912b1c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data destroy successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/restore": {
+            "put": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Restore a City",
+                "operationId": "2821accd522d625cc8028ddcb34c6389",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data restore successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/State/index": {
+            "get": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "index States",
+                "operationId": "6cd5888262ff2a245987ea2b55b33b40",
+                "responses": {
+                    "200": {
+                        "description": "Data index successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/State/create": {
+            "get": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "create a State",
+                "operationId": "bfbb1263c173632705024062713fc0c8",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count test State Data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data create successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/State/store": {
+            "post": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "create a State",
+                "operationId": "f7edd063b2f9a28b9c707e27a3193018",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name State",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data store successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/State/show": {
+            "get": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "create a State",
+                "operationId": "a7f28ad144dca513cc15993f7e946a30",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id State",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data show successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/State/edit": {
+            "get": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "create a State",
+                "operationId": "5786361ca640fdfe58bb65627dd05992",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id State",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data edit successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/State/update": {
+            "post": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "create a State",
+                "operationId": "266c9a24066960630706c56ddbd56516",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id State",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name State",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data update successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/State/destroy": {
+            "delete": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "Delete a State",
+                "operationId": "13b822d3b45304a22972cf99f60ff31b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id State",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data destroy successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/State/restore": {
+            "put": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "Restore a State",
+                "operationId": "5ec96ddfb7e04619c31de9a4abec0d04",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id State",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data restore successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/admin/Product/index": {
             "get": {
                 "tags": [
@@ -1446,6 +1988,73 @@
                 ]
             }
         },
+        "/api/admin/Product/update/Color/Price": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "add Color Price in Product",
+                "operationId": "d8987f7632686a33940105384f6eb4d5",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to be updated",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "ColorPrice": {
+                                        "description": "Array of Color and Price to be updated",
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "Color": {
+                                                    "description": "id Color of the Product",
+                                                    "type": "string"
+                                                },
+                                                "Quantity": {
+                                                    "description": "Quantity Product",
+                                                    "type": "string"
+                                                },
+                                                "Price": {
+                                                    "description": "Price of the Product",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/admin/Product/add/Detial": {
             "post": {
                 "tags": [
@@ -1453,6 +2062,69 @@
                 ],
                 "summary": "add Detial in Product",
                 "operationId": "911e35be04d0cd6597b09a03d27e3a26",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to be updated",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "featureProducts": {
+                                        "description": "Array of Feature product",
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "title": {
+                                                    "description": "title Feature Product",
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "description": "value Feature Product",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/update/Detial": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "add Detial in Product",
+                "operationId": "49b8fdb0920cac50092e1e38ebee2203",
                 "parameters": [
                     {
                         "name": "product_id",
