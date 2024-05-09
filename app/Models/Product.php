@@ -19,4 +19,9 @@ class Product extends Model
     {
         return $this->hasMany(FeatureProduct::class,'product_id');
     }
+    
+    public function discount()
+    {
+        return $this->hasOne(Discount::class,'product_id');
+    }
 }

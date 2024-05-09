@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('photo_path', 2048)->nullable();
             $table->foreignId('categorie_id')->constrained();
             $table->foreignId('berand_id')->constrained();
+            $table->boolean('specific');
             $table->timestamps();
             $table->softDeletes();
         });
