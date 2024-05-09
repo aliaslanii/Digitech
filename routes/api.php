@@ -88,11 +88,19 @@ Route::prefix('admin')->middleware('auth:sanctum','role:Admin')->group(function 
         Route::post('update', [ProductController::class, 'update'])->middleware('role:Update');
         Route::delete('destroy', [ProductController::class, 'destroy'])->middleware('role:Delete');
         Route::put('restore', [ProductController::class, 'restore'])->middleware('role:Update');
+
+        Route::post('add/Discount', [ProductController::class, 'addProductDiscount'])->middleware('role:Create');
+        Route::post('update/Discount', [ProductController::class, 'updateProductDiscount'])->middleware('role:Update');
+        Route::post('remove/Discount', [ProductController::class, 'removeProductDiscount'])->middleware('role:Update');
+
         Route::post('add/Color/Price', [ProductController::class, 'addProductColorPrice'])->middleware('role:Create');
-        Route::post('update/Color/Price', [ProductController::class, 'updateProductColorPrice'])->middleware('role:Create');
+        Route::post('update/Color/Price', [ProductController::class, 'updateProductColorPrice'])->middleware('role:Update');
+        
         Route::post('add/Detial', [ProductController::class, 'addProductDetial'])->middleware('role:Create');
-        Route::post('update/Detial', [ProductController::class, 'updateProductDetial'])->middleware('role:Create');
+        Route::post('update/Detial', [ProductController::class, 'updateProductDetial'])->middleware('role:Update');
+        
         Route::post('add/image', [ProductController::class, 'addProductImage'])->middleware('role:Create');
+        
         Route::delete('remove/image', [ProductController::class, 'removeProductImage'])->middleware('role:Delete');
     });
 });

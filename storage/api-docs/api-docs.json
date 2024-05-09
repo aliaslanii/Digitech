@@ -1921,6 +1921,159 @@
                 ]
             }
         },
+        "/api/admin/Product/add/Discount": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "add Discount in Product",
+                "operationId": "805f39672d0bd1204136ab7ece3ffccd",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "discount_amount",
+                        "in": "query",
+                        "description": "amount discount Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "startTime",
+                        "in": "query",
+                        "description": "startTime Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endTime",
+                        "in": "query",
+                        "description": "startTime Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/update/Discount": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "update Discount in Product",
+                "operationId": "1239884469a2e199d8ef9579d9a8a77d",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "discount_amount",
+                        "in": "query",
+                        "description": "amount discount Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "startTime",
+                        "in": "query",
+                        "description": "startTime Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endTime",
+                        "in": "query",
+                        "description": "startTime Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Product/remove/Discount": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "update Discount in Product",
+                "operationId": "443ea1bf90b36dcc48612f776c684edb",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/admin/Product/add/Color/Price": {
             "post": {
                 "tags": [
