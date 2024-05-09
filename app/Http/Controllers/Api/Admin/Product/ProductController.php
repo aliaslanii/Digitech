@@ -6,9 +6,11 @@ use App\FileTransfer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\ColorProduct;
+use App\Models\Discount;
 use App\Models\FeatureProduct;
 use App\Models\ImageProduct;
 use App\Models\Product;
+use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
@@ -495,6 +497,176 @@ class ProductController extends Controller
             return Response::json([
                 'status' => true,
                 'data' => $Product
+            ], 200);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+    /**
+     * @OA\Post(
+     *     path="/api/admin/Product/add/Discount",
+     *     summary="add Discount in Product",
+     *     tags={"Product"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="product_id",
+     *         in="query",
+     *         description="id Product",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="discount_amount",
+     *         in="query",
+     *         description="amount discount Product",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Parameter(
+     *         name="startTime",
+     *         in="query",
+     *         description="startTime Product",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="endTime",
+     *         in="query",
+     *         description="startTime Product",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data updated successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
+     * )
+     */
+    public function addProductDiscount(Request $request)
+    {
+        try {
+            $Product = Product::find($request->product_id);
+            $Discount = new Discount();
+            $Discount->product_id = $request->product_id;
+            $Discount->discount_amount = $request->discount_amount;
+            $Discount->startTime =  Verta::parse($request->startTime)->datetime();
+            $Discount->endTime =  Verta::parse($request->endTime)->datetime();
+            $Discount->save();
+            return Response::json([
+                'status' => true,
+                'Product Discount' => $Product->discount
+            ], 200);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/api/admin/Product/update/Discount",
+     *     summary="update Discount in Product",
+     *     tags={"Product"},
+     *     security={{"bearerAuth":{}}},
+     *    @OA\Parameter(
+     *         name="product_id",
+     *         in="query",
+     *         description="id Product",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="discount_amount",
+     *         in="query",
+     *         description="amount discount Product",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Parameter(
+     *         name="startTime",
+     *         in="query",
+     *         description="startTime Product",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="endTime",
+     *         in="query",
+     *         description="startTime Product",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data updated successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
+     * )
+     */
+    public function updateProductDiscount(Request $request)
+    {
+        try {
+            $Product = Product::find($request->product_id);
+            $Discount = $Product->discount;
+            $Discount->product_id = $request->product_id;
+            $Discount->discount_amount = $request->discount_amount;
+            $Discount->startTime =  Verta::parse($request->startTime)->datetime();
+            $Discount->endTime =  Verta::parse($request->endTime)->datetime();
+            $Discount->save();
+            return Response::json([
+                'status' => true,
+                'Product Discount' => $Product->discount
+            ], 200);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+/**
+     * @OA\Post(
+     *     path="/api/admin/Product/remove/Discount",
+     *     summary="update Discount in Product",
+     *     tags={"Product"},
+     *     security={{"bearerAuth":{}}},
+     *    @OA\Parameter(
+     *         name="product_id",
+     *         in="query",
+     *         description="id Product",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data updated successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
+     * )
+     */
+    public function removeProductDiscount(Request $request)
+    {
+        try {
+            $Product = Product::find($request->product_id);
+            $Discount = $Product->discount;
+            $Discount->delete();
+            return Response::json([
+                'status' => true,
             ], 200);
         } catch (\Throwable $th) {
             return Response::json([
