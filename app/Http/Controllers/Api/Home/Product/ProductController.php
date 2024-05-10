@@ -60,7 +60,7 @@ class ProductController extends Controller
      *         in="query",
      *         description="dtp product",
      *         required=true,
-     *         @OA\Schema(type="integer")
+     *         @OA\Schema(type="string")
      *     ),
      *     @OA\Response(
      *          response=200,
