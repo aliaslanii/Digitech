@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use HasFactory,SoftDeletes;
+    
+    public function incrementViews()
+    {
+        $this->increment('views');
+    }
 
     public function ColorProduct()
     {
@@ -24,4 +29,20 @@ class Product extends Model
     {
         return $this->hasOne(Discount::class,'product_id');
     }
+
+    public function Category()
+    {
+        return $this->belongsTo(Category::class,'categorie_id');
+    }
+
+    public function Berand()
+    {
+        return $this->belongsTo(Berand::class,'berand_id');
+    }
+
+    public function Image()
+    {
+        return $this->hasMany(ImageProduct::class,'product_id');
+    }
+   
 }

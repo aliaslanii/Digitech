@@ -22,9 +22,12 @@ class ProductFactory extends Factory
             'name' => fake()->company(),
             'description' => fake()->text() ,
             'stock_quantity' => random_int(1,200),
+            'specific' => fake()->boolean(),
             'photo_path' => fake()->imageUrl() ,
             'categorie_id' => Category::factory(),
             'berand_id' => Berand::factory(),
+            'views' => random_int(1,200),
+            'dtp' => 'dtp-' . mt_rand(1000000, 9999999),
         ];
     }
 }

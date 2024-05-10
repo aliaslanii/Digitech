@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
+use Ramsey\Uuid\Uuid;
 
 class ProductController extends Controller
 {
@@ -152,7 +153,12 @@ class ProductController extends Controller
      *                     format="binary",
      *                     description="Additional product images"
      *                 )
-     *             )
+     *             ),
+     *             @OA\Property(
+     *                 property="specific",
+     *                 type="string",
+     *                 enum={"1", "0"}
+     *             ),
      *         )
      *     )
      *    ),
@@ -173,7 +179,9 @@ class ProductController extends Controller
             }
             $Product = new Product();
             $Product->name = $request->name;
+            $Product->dtp = 'dtp-' . mt_rand(1000000, 9999999);
             $Product->description = $request->description;
+            $Product->specific = $request->specific;
             $Product->stock_quantity = $request->stock_quantity;
             $Product->categorie_id = $request->Category;
             $Product->berand_id = $request->Berand;
@@ -322,6 +330,11 @@ class ProductController extends Controller
      *                 format="binary",
      *                 description="Main product image"
      *             ),
+     *             @OA\Property(
+     *                 property="specific",
+     *                 type="string",
+     *                 enum={"1","0"}
+     *              ),
      *         )
      *     )
      *    ),
@@ -343,6 +356,7 @@ class ProductController extends Controller
             $Product = Product::find($request->id);
             $Product->name = $request->name;
             $Product->description = $request->description;
+            $Product->specific = $request->specific;
             $Product->stock_quantity = $request->stock_quantity;
             $Product->categorie_id = $request->Category;
             $Product->berand_id = $request->Berand;
@@ -636,7 +650,7 @@ class ProductController extends Controller
             ], 500);
         }
     }
-/**
+    /**
      * @OA\Post(
      *     path="/api/admin/Product/remove/Discount",
      *     summary="update Discount in Product",
@@ -735,8 +749,7 @@ class ProductController extends Controller
     {
         try {
             $Product = Product::find($request->product_id);
-            foreach($request->ColorPrice as $ColorPrice)
-            {
+            foreach ($request->ColorPrice as $ColorPrice) {
                 $ColorProduct = new ColorProduct();
                 $ColorProduct->product_id = $request->product_id;
                 $ColorProduct->color_id = $ColorPrice['Color'];
@@ -815,9 +828,8 @@ class ProductController extends Controller
     {
         try {
             $Product = Product::find($request->product_id);
-            ColorProduct::where('product_id','=',$Product->id)->delete();
-            foreach($request->ColorPrice as $ColorPrice)
-            {
+            ColorProduct::where('product_id', '=', $Product->id)->delete();
+            foreach ($request->ColorPrice as $ColorPrice) {
                 $ColorProduct = new ColorProduct();
                 $ColorProduct->product_id = $request->product_id;
                 $ColorProduct->color_id = $ColorPrice['Color'];
@@ -891,8 +903,7 @@ class ProductController extends Controller
     {
         try {
             $Product = Product::find($request->product_id);
-            foreach($request->featureProducts as $featureProduct)
-            {
+            foreach ($request->featureProducts as $featureProduct) {
                 $FeatureProduct = new FeatureProduct();
                 $FeatureProduct->product_id = $request->product_id;
                 $FeatureProduct->title = $featureProduct['title'];
@@ -965,10 +976,9 @@ class ProductController extends Controller
     {
         try {
             $Product = Product::find($request->product_id);
-            FeatureProduct::where('product_id','=',$Product->id)->delete();
-            foreach($request->featureProducts as $featureProduct)
-            {
-                
+            FeatureProduct::where('product_id', '=', $Product->id)->delete();
+            foreach ($request->featureProducts as $featureProduct) {
+
                 $FeatureProduct = new FeatureProduct();
                 $FeatureProduct->product_id = $request->product_id;
                 $FeatureProduct->title = $featureProduct['title'];
