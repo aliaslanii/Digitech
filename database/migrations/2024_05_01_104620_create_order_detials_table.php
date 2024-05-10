@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained();
             $table->foreignId('product_id')->constrained();
-            $table->integer('quantity')->constrained();
-            $table->double('unit_price')->constrained();
+            $table->integer('quantity');
+            $table->double('unit_price');
             $table->timestamps();
             $table->softDeletes();
         });
