@@ -1584,6 +1584,13 @@
                                             "type": "string",
                                             "format": "binary"
                                         }
+                                    },
+                                    "specific": {
+                                        "type": "string",
+                                        "enum": [
+                                            "1",
+                                            "0"
+                                        ]
                                     }
                                 },
                                 "type": "object"
@@ -1755,6 +1762,13 @@
                                         "description": "Main product image",
                                         "type": "string",
                                         "format": "binary"
+                                    },
+                                    "specific": {
+                                        "type": "string",
+                                        "enum": [
+                                            "1",
+                                            "0"
+                                        ]
                                     }
                                 },
                                 "type": "object"
@@ -2483,6 +2497,51 @@
                         "bearerAuth": []
                     }
                 ]
+            }
+        },
+        "/api/Product/index": {
+            "get": {
+                "tags": [
+                    "Product Home"
+                ],
+                "summary": "index Products",
+                "operationId": "5e61ecf4d3fbfff0117b154169396340",
+                "responses": {
+                    "200": {
+                        "description": "Test Product Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/Product/Show": {
+            "get": {
+                "tags": [
+                    "Product Home"
+                ],
+                "summary": "index Products",
+                "operationId": "76b5ef21832f71911d455531fc28518a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Test Product Created successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                }
             }
         },
         "/api/User/ChangePassword": {

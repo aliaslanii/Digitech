@@ -7,9 +7,9 @@ use App\Http\Controllers\Api\Admin\Locality\CityController;
 use App\Http\Controllers\Api\Admin\Locality\StateController;
 use App\Http\Controllers\Api\Admin\Product\ProductController;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Home\Product\ProductController as ProductHomeController;
 use App\Http\Controllers\Api\Home\User\UserControllerapi;
 use Illuminate\Support\Facades\Route;
-
 
 Route::prefix('auth')->group(function () {
     Route::post('register', [AuthController::class, 'userRegister']);
@@ -27,6 +27,10 @@ Route::prefix('User')->group(function () {
     Route::put('ChangeEmail', [UserControllerapi::class, 'changeEmail'])->middleware('auth:sanctum');
     Route::delete('destroy', [UserControllerapi::class, 'destroy']);
     Route::put('restore', [UserControllerapi::class, 'restore']);
+});
+Route::prefix('Product')->group(function () {
+    Route::get('index', [ProductHomeController::class, 'index']);
+    Route::get('Show', [ProductHomeController::class, 'showProduct']);
 });
 Route::prefix('admin')->middleware('auth:sanctum','role:Admin')->group(function () {
     Route::prefix('Category')->group(function () {
