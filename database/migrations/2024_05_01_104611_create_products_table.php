@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('dtp')->unique();
             $table->string('name');
             $table->text('description');
             $table->double('stock_quantity');
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->foreignId('categorie_id')->constrained();
             $table->foreignId('berand_id')->constrained();
             $table->boolean('specific');
+            $table->unsignedBigInteger('views')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
