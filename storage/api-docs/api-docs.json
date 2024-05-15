@@ -2765,6 +2765,148 @@
                 ]
             }
         },
+        "/api/Cart/Show/Product": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Add Product in Cart",
+                "operationId": "a79dff3f614034cd3407c1af778ba3fc",
+                "responses": {
+                    "200": {
+                        "description": "Data index successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Cart/Add/Product": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Add Product in Cart",
+                "operationId": "d45f5d1868d27e9350cf7f60e2477a6e",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "id product",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "color_id",
+                        "in": "query",
+                        "description": "id product",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data index successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Cart/Added/Product": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Add Added in Cart",
+                "operationId": "7d370dc4235b29b97fbabb204babb4b0",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "id product",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "color_id",
+                        "in": "query",
+                        "description": "id product",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data index successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Cart/Decreased/Product": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Decreased Product in Cart",
+                "operationId": "dbcf1b97a04de46c0d4f6bc0337cf990",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "id product",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "color_id",
+                        "in": "query",
+                        "description": "id product",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data index successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/Product/index": {
             "get": {
                 "tags": [

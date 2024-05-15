@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
@@ -94,6 +95,10 @@ class AuthController extends Controller
             $wallet->inventory = 0;
             $wallet->status = true;
             $wallet->save();
+            $Cart = new Cart();
+            $Cart->user_id = $user->id;
+            $Cart->is_pay = 0;
+            $Cart->save();
             return Response::json([
                 'status' => true,
                 'message' => 'User Created Successfully',

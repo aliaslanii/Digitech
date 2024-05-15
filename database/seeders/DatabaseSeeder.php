@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cart;
 use App\Models\Role;
 use App\Models\RoleUser;
 use App\Models\User;
+use App\Models\Wallet;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -23,11 +25,15 @@ class DatabaseSeeder extends Seeder
             'email' => 'a@a.com',
             'password' => Hash::make('Ali_1727'),
         ]);
-        // $wallet = new Wallet();
-        // $wallet->user_id = $user->id;
-        // $wallet->inventory = 0;
-        // $wallet->status = true;
-        // $wallet->save();
+        $wallet = new Wallet();
+        $wallet->user_id = 1;
+        $wallet->inventory = 0;
+        $wallet->status = true;
+        $wallet->save();
+        $Cart = new Cart();
+        $Cart->user_id = 1;
+        $Cart->is_pay = 0;
+        $Cart->save();
         Role::create([
             'name' => 'Admin'
         ]);
