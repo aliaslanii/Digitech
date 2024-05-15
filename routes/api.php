@@ -35,8 +35,10 @@ Route::prefix('Product')->group(function () {
     Route::get('Show', [ProductHomeController::class, 'showProduct']);
 });
 Route::prefix('Cart')->middleware('auth:sanctum')->group(function () {
-    Route::get('Show', [CartHomeController::class, 'showProduct']);
+    Route::get('Show/Product', [CartHomeController::class, 'showProduct']);
     Route::get('Add/Product', [CartHomeController::class, 'addProduct']);
+    Route::get('Added/Product', [CartHomeController::class, 'addedProduct']);
+    Route::get('Decreased/Product', [CartHomeController::class, 'decreasedProduct']);
 });
 Route::prefix('admin')->middleware('auth:sanctum','role:Admin')->group(function () {
     Route::prefix('Category')->group(function () {
