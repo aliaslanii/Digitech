@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('card_products', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('product_id')->constrained();
-            $table->foreignId('color_id')->constrained();
-            $table->integer('count'); 
+            $table->string('title');
+            $table->text('body');
+            $table->boolean('is_accept');
+            $table->enum('rating',[1,2,3,4,5]);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('card_products');
+        Schema::dropIfExists('comments');
     }
 };

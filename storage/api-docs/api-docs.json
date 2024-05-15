@@ -905,6 +905,272 @@
                 ]
             }
         },
+        "/api/admin/Comment/index": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "index Comments",
+                "operationId": "4edb7cd2a969719931eb457b2c6ba61d",
+                "responses": {
+                    "200": {
+                        "description": "Data index successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Comment/create": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "create a Comment",
+                "operationId": "ee652cfdfcd890ab20da66bd66f8bd3c",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count test Comment Data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data create successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Comment/show": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "create a Comment",
+                "operationId": "e6ac13a21079e14c46528e06633b9f51",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data show successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Comment/update": {
+            "post": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "create a Comment",
+                "operationId": "ba6c31c5e1eac0a193d4188a6feaedcf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Comment",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "title Comment",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "description"
+                                ],
+                                "properties": {
+                                    "body": {
+                                        "description": "body comment",
+                                        "type": "string",
+                                        "format": "textarea"
+                                    },
+                                    "is_accept": {
+                                        "type": "string",
+                                        "enum": [
+                                            "0",
+                                            "1"
+                                        ]
+                                    },
+                                    "rating": {
+                                        "type": "string",
+                                        "enum": [
+                                            "1",
+                                            "2",
+                                            "3",
+                                            "4",
+                                            "5"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data update successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Comment/destroy": {
+            "delete": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Delete a Comment",
+                "operationId": "fff88b57b53e5956e7553c701abfdf88",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Comment",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data destroy successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Comment/restore": {
+            "put": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Restore a Comment",
+                "operationId": "c8ca56f78899244bb220635ac24c0169",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Comment",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data restore successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Comment/accept": {
+            "put": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Restore a Comment",
+                "operationId": "8a28e7279ce1c4c1b919b85428d5e5ec",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Comment",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data restore successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/admin/City/index": {
             "get": {
                 "tags": [
@@ -1766,8 +2032,8 @@
                                     "specific": {
                                         "type": "string",
                                         "enum": [
-                                            "1",
-                                            "0"
+                                            "0",
+                                            "1"
                                         ]
                                     }
                                 },
@@ -2508,10 +2774,10 @@
                 "operationId": "5e61ecf4d3fbfff0117b154169396340",
                 "responses": {
                     "200": {
-                        "description": "Test Product Created successfully"
+                        "description": "Data create successfully"
                     },
-                    "403": {
-                        "description": "Validation errors"
+                    "400": {
+                        "description": "Invalid data"
                     }
                 }
             }
@@ -2525,21 +2791,21 @@
                 "operationId": "76b5ef21832f71911d455531fc28518a",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "dtp",
                         "in": "query",
-                        "description": "id product",
+                        "description": "dtp product",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Test Product Created successfully"
+                        "description": "Data create successfully"
                     },
-                    "403": {
-                        "description": "Validation errors"
+                    "400": {
+                        "description": "Invalid data"
                     }
                 }
             }
