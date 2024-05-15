@@ -3,10 +3,12 @@
 use App\Http\Controllers\Api\Admin\Berand\BerandController;
 use App\Http\Controllers\Api\Admin\Category\CategoryController;
 use App\Http\Controllers\Api\Admin\Color\ColorController;
+use App\Http\Controllers\Api\Admin\Comments\CommentController;
 use App\Http\Controllers\Api\Admin\Locality\CityController;
 use App\Http\Controllers\Api\Admin\Locality\StateController;
 use App\Http\Controllers\Api\Admin\Product\ProductController;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Home\Cart\CartHomeController;
 use App\Http\Controllers\Api\Home\Product\ProductController as ProductHomeController;
 use App\Http\Controllers\Api\Home\User\UserControllerapi;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +33,10 @@ Route::prefix('User')->group(function () {
 Route::prefix('Product')->group(function () {
     Route::get('index', [ProductHomeController::class, 'index']);
     Route::get('Show', [ProductHomeController::class, 'showProduct']);
+});
+Route::prefix('Cart')->middleware('auth:sanctum')->group(function () {
+    Route::get('Show', [CartHomeController::class, 'showProduct']);
+    Route::get('Add/Product', [CartHomeController::class, 'addProduct']);
 });
 Route::prefix('admin')->middleware('auth:sanctum','role:Admin')->group(function () {
     Route::prefix('Category')->group(function () {
@@ -82,6 +88,15 @@ Route::prefix('admin')->middleware('auth:sanctum','role:Admin')->group(function 
         Route::post('update', [CityController::class, 'update'])->middleware('role:Update');
         Route::delete('destroy', [CityController::class, 'destroy'])->middleware('role:Delete');
         Route::put('restore', [CityController::class, 'restore'])->middleware('role:Update');
+    });
+    Route::prefix('Comments')->group(function () {
+        Route::get('index', [CommentController::class, 'index'])->middleware('role:Read');
+        Route::get('create', [CommentController::class, 'create'])->middleware('role:Create');
+        Route::get('show', [CommentController::class, 'show'])->middleware('role:Read');
+        Route::post('update', [CommentController::class, 'update'])->middleware('role:Update');
+        Route::delete('destroy', [CommentController::class, 'destroy'])->middleware('role:Delete');
+        Route::put('restore', [CommentController::class, 'restore'])->middleware('role:Update');
+        Route::put('accept', [CommentController::class, 'accept'])->middleware('role:Update');
     });
     Route::prefix('Product')->group(function () {
         Route::get('index', [ProductController::class, 'index'])->middleware('role:Read');

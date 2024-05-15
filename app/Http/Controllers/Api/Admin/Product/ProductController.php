@@ -333,7 +333,7 @@ class ProductController extends Controller
      *             @OA\Property(
      *                 property="specific",
      *                 type="string",
-     *                 enum={"1","0"}
+     *                 enum={"0","1"}
      *              ),
      *         )
      *     )
