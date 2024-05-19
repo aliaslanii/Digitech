@@ -27,6 +27,7 @@ Route::prefix('User')->group(function () {
     Route::put('BankInformation', [UserControllerapi::class, 'bankInformation'])->middleware('auth:sanctum');
     Route::put('ChangeMobile', [UserControllerapi::class, 'changeMobile'])->middleware('auth:sanctum');
     Route::put('ChangeEmail', [UserControllerapi::class, 'changeEmail'])->middleware('auth:sanctum');
+    Route::put('Addres', [UserControllerapi::class, 'addres'])->middleware('auth:sanctum');
     Route::delete('destroy', [UserControllerapi::class, 'destroy']);
     Route::put('restore', [UserControllerapi::class, 'restore']);
 });
@@ -35,7 +36,8 @@ Route::prefix('Product')->group(function () {
     Route::get('Show', [ProductHomeController::class, 'showProduct']);
 });
 Route::prefix('Cart')->middleware('auth:sanctum')->group(function () {
-    Route::get('Show/Product', [CartHomeController::class, 'showProduct']);
+    Route::get('checkout/Cart', [CartHomeController::class, 'checkoutCart']);
+    Route::get('checkout/shipping', [CartHomeController::class, 'checkoutShipping']);
     Route::get('Add/Product', [CartHomeController::class, 'addProduct']);
     Route::get('Added/Product', [CartHomeController::class, 'addedProduct']);
     Route::get('Decreased/Product', [CartHomeController::class, 'decreasedProduct']);

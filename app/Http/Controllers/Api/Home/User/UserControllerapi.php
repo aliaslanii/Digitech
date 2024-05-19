@@ -288,4 +288,30 @@ class UserControllerapi extends Controller
             ], 500);
         }
     }
+    /**
+     * @OA\Put(
+     *     path="/api/User/Addres",
+     *     summary="Add Addres a User",
+     *     security={{"bearerAuth":{}}},
+     *     tags={"User"},
+     *      @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="email mobile",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response="200", description="add personalInformation successfully"),
+     * )
+     */
+    public function addres(Request $request)
+    {
+        try {
+            
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
 }

@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers\Api\Home\Cart;
 
+use App\HomeColor;
+use App\HomeProduct;
 use App\Http\Controllers\Controller;
-use App\Models\Cart;
 use App\Models\CartProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 class CartHomeController extends Controller
 {
+    protected $HomeProduct;
+    protected $HomeColor;
+    public function __construct()
+    {
+        $this->HomeProduct = new HomeProduct;
+        $this->HomeColor = new HomeColor;
+    }
      /**
      * @OA\Get(
-     *     path="/api/Cart/Show/Product",
+     *     path="/api/Cart/checkout/Cart",
      *     summary="Show Products in Cart",
      *     security={{"bearerAuth":{}}},
      *     tags={"Cart"},
@@ -26,13 +34,80 @@ class CartHomeController extends Controller
      *      ),
      * )
      */
-    public function showProduct(Request $request)
+    public function checkoutCart(Request $request)
     {
         try {
             $Cart = $request->user()->Cart->where('is_pay',0)->first();
+            $Products = [];
+            foreach ($Cart->products as $Product) {
+                $ProductData = [
+                    "count" => $Product->pivot->count,
+                    "color name" =>  $this->HomeColor->getColorDetailsById($Product->pivot->color_id)->name,
+                    "color" =>  $this->HomeColor->getColorDetailsById($Product->pivot->color_id)->color,
+                    "price" =>  $this->HomeProduct->getProductPrice($Product),
+                    "name" => $Product->name,
+                    "description" => $Product->description,
+                    "stock quantity" => $Product->stock_quantity,
+                    "specific" => $Product->specific,
+                    "main photo" => $Product->photo_path,
+                    "Category" => $Product->Category->name,
+                    "Berand" => $Product->Berand->name,
+                    'dtp' => $Product->dtp,
+                    'is_discount' => $this->HomeProduct->getProductDiscount($Product),
+                ];
+                $Products[] = $ProductData;
+            }
             return Response::json([
                 'status' => true,
-                'data' => $Cart->cartProduct
+                'data' => $Products
+            ], 200);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+    /**
+     * @OA\Get(
+     *     path="/api/Cart/checkout/shipping",
+     *     summary="Show Products in Cart",
+     *     security={{"bearerAuth":{}}},
+     *     tags={"Cart"},
+     *     @OA\Response(
+     *          response=200,
+     *          description="Data index successfully",
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Invalid data",
+     *      ),
+     * )
+     */
+    public function checkoutShipping(Request $request)
+    {
+        try {
+            $Cart = $request->user()->Cart->where('is_pay',0)->first();
+            $productsMaxDiscount = [];
+            foreach ($Cart->cartProduct as $Product) {
+                $ProductData = [
+                    "name" => $Product->name,
+                    "description" => $Product->description,
+                    "stock quantity" => $Product->stock_quantity,
+                    "specific" => $Product->specific,
+                    "main photo" => $Product->photo_path,
+                    "Category" => $Product->Category->name,
+                    "Berand" => $Product->Berand->name,
+                    'dtp' => $Product->dtp,
+                    'discount amount' => $Product->discount ? $Product->discount->discount_amount : null,
+                    'startTime discount' => $Product->discount ? $Product->discount->startTime : null,
+                    'endTime discount' => $Product->discount ? $Product->discount->endTime : null,
+                ];
+                $productsMaxDiscount[] = $ProductData;
+            }
+            return Response::json([
+                'status' => true,
+                'data' => $productsMaxDiscount
             ], 200);
         } catch (\Throwable $th) {
             return Response::json([

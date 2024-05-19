@@ -2765,13 +2765,35 @@
                 ]
             }
         },
-        "/api/Cart/Show/Product": {
+        "/api/Cart/checkout/Cart": {
             "get": {
                 "tags": [
                     "Cart"
                 ],
-                "summary": "Add Product in Cart",
-                "operationId": "a79dff3f614034cd3407c1af778ba3fc",
+                "summary": "Show Products in Cart",
+                "operationId": "688199ce3b77a3635bc5edfc9c6d6ebe",
+                "responses": {
+                    "200": {
+                        "description": "Data index successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Cart/checkout/shipping": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Show Products in Cart",
+                "operationId": "5fc8537cd3c5ebb5de38daf3bb66d5c6",
                 "responses": {
                     "200": {
                         "description": "Data index successfully"

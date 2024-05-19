@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Home\Product;
 
+use App\HomeColor;
 use App\HomeProduct;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -11,10 +12,12 @@ use Illuminate\Support\Facades\Response;
 class ProductController extends Controller
 {
     protected $HomeProduct;
+    protected $HomeColor;
 
     public function __construct()
     {
         $this->HomeProduct = new HomeProduct();
+        $this->HomeColor = new HomeColor();
     }
     /**
      * @OA\Get(
@@ -81,16 +84,15 @@ class ProductController extends Controller
             $ProductData = [
                 "name" => $Product->name,
                 "description" => $Product->description,
-                "stock quantity" => $Product->stock_quantity,
+                "stock quantity" => $this->HomeProduct->stockQuantityProduct($Product),
+                "detail Producu price color" => $this->HomeProduct->getMinDetailProduct($Product),
                 "specific" => $Product->specific,
                 "main photo" => $Product->photo_path,
                 "additional photo" => $this->HomeProduct->getImages($Product),
                 "Category" => $Product->Category->name,
                 "Berand" => $Product->Berand->name,
                 'dtp' => $Product->dtp,
-                'discount amount' => $Product->discount ? $Product->discount->discount_amount : null,
-                'startTime discount' => $Product->discount ? $Product->discount->startTime : null,
-                'endTime discount' => $Product->discount ? $Product->discount->endTime : null,
+                'is_discount' => $this->HomeProduct->getProductDiscount($Product),
             ];
             $Response[] = $ProductData;
             return Response::json([
