@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Home\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
@@ -139,14 +140,28 @@ class UserControllerapi extends Controller
             $user = $request->user();
             $user->firstName = $request->firstName;
             $user->lastName = $request->lastName;
-            $user->birthday = $request->birthday;
-            $user->nationalcode = $request->nationalcode;
-            $user->gender = $request->gender;
             $user->update();
+            $Customer = $user->Customer;
+            $Customer->birthday = Verta::parse($request->birthday)->datetime();
+            $Customer->nationalcode = $request->nationalcode;
+            $Customer->gender = $request->gender;
+            $Customer->update();
+            $User = [
+                "firstName" => $user->firstName,
+                "lastName" => $user->lastName,
+                "mobile" => $user->mobile,
+                "email" => $user->email ,
+                "profile_photo_path" => $user->getprofile($user->profile_photo_path),
+                "birthday" =>  $Customer->birthday ,
+                "nationalcode" =>  $Customer->nationalcode ,
+                "gender" =>  $Customer->gender ,
+                "cardnumber" =>  $Customer->cardnumber ,
+                "shabanumber" =>  $Customer->shabanumber ,
+            ];
             return Response::json([
                 'status' => true,
                 'message' => 'User Created Personal Information Successfully',
-                'token' => $user
+                'data' => $User,
             ], 200);
         } catch (\Throwable $th) {
             return Response::json([
@@ -188,10 +203,10 @@ class UserControllerapi extends Controller
                     'errors' => $Validate->errors()
                 ], 403);
             }
-            $user = $request->user();
-            $user->shabanumber = $request->shabanumber;
-            $user->cardnumber = $request->cardnumber;
-            $user->update();
+            $Customer = $request->user()->Customer;
+            $Customer->shabanumber = $request->shabanumber;
+            $Customer->cardnumber = $request->cardnumber;
+            $Customer->update();
             return Response::json([
                 'status' => true,
                 'message' => 'User Created Bank Information Successfully',

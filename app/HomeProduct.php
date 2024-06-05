@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\CartProduct;
 use App\Models\Color;
 use App\Models\ColorProduct;
 use App\Models\Discount;
@@ -16,25 +17,28 @@ class HomeProduct
     {
         $this->HomeColor = new HomeColor();
     }
+    public function showProduct($Product)
+    {
+        return $dataProduct = [
+            "name" => $Product->name,
+            "description" => $Product->description,
+            "stock quantity" => $this->stockQuantityProduct($Product),
+            "detail Producut price color" => $this->getMinDetailProduct($Product),
+            "specific" => $Product->specific,
+            "main photo" => $Product->photo_path,
+            "additional photo" => $this->getImages($Product),
+            "Category" => $Product->Category->name,
+            "Berand" => $Product->Berand->name,
+            'dtp' => $Product->dtp,
+            'is_discount' => $this->getProductDiscount($Product),
+        ];
+    }
     public function MostViewedProduct()
     {
         $Products = Product::orderBy('views', 'desc')->take(12)->get();
         $MostViewedProduct = [];
         foreach ($Products as $Product) {
-            $ProductData = [
-                "name" => $Product->name,
-                "description" => $Product->description,
-                "stock quantity" => $Product->stock_quantity,
-                "specific" => $Product->specific,
-                "main photo" => $Product->photo_path,
-                "Category" => $Product->Category->name,
-                "Berand" => $Product->Berand->name,
-                'dtp' => $Product->dtp,
-                'discount amount' => $Product->discount ? $Product->discount->discount_amount : null,
-                'startTime discount' => $Product->discount ? $Product->discount->startTime : null,
-                'endTime discount' => $Product->discount ? $Product->discount->endTime : null,
-            ];
-            $MostViewedProduct[] = $ProductData;
+            $MostViewedProduct[] = $this->showProduct($Product);
         }
         return $MostViewedProduct;
     }
@@ -43,20 +47,7 @@ class HomeProduct
         $Products = Product::orderBy('views', 'desc')->get();
         $HotProducts = [];
         foreach ($Products as $Product) {
-            $ProductData = [
-                "name" => $Product->name,
-                "description" => $Product->description,
-                "stock quantity" => $Product->stock_quantity,
-                "specific" => $Product->specific,
-                "main photo" => $Product->photo_path,
-                "Category" => $Product->Category->name,
-                "Berand" => $Product->Berand->name,
-                'dtp' => $Product->dtp,
-                'discount amount' => $Product->discount ? $Product->discount->discount_amount : null,
-                'startTime discount' => $Product->discount ? $Product->discount->startTime : null,
-                'endTime discount' => $Product->discount ? $Product->discount->endTime : null,
-            ];
-            $HotProducts[] = $ProductData;
+            $HotProducts[] = $this->showProduct($Product);
         }
         return $HotProducts;
     }
@@ -66,24 +57,13 @@ class HomeProduct
         $productsMaxDiscount = [];
         foreach ($Discounts as $Discount) {
             $Product = $Discount->Product;
-            $ProductData = [
-                "name" => $Product->name,
-                "description" => $Product->description,
-                "stock quantity" => $Product->stock_quantity,
-                "specific" => $Product->specific,
-                "main photo" => $Product->photo_path,
-                "Category" => $Product->Category->name,
-                "Berand" => $Product->Berand->name,
-                'dtp' => $Product->dtp,
-                'discount amount' => $Product->discount ? $Product->discount->discount_amount : null,
-                'startTime discount' => $Product->discount ? $Product->discount->startTime : null,
-                'endTime discount' => $Product->discount ? $Product->discount->endTime : null,
-            ];
-            $productsMaxDiscount[] = $ProductData;
+            if($this->getProductDiscount($Product) != false)
+            {
+                $productsMaxDiscount[] = $this->showProduct($Product);
+            }
         }
         return $productsMaxDiscount;
     }
-
 
     public function getImages($Product)
     {
@@ -152,4 +132,31 @@ class HomeProduct
             return true;
         }
     }
+    public function isAvailableAdded($Cart,$Product,$Color)
+    {
+        $CartProdcut = CartProduct::FindCartProduct($Product,$Color,$Cart)->first();
+        $ColorProduct = ColorProduct::FindColorProduct($Product,$Color)->first();
+        if($ColorProduct != null || $CartProdcut != null)
+        {
+            if ($ColorProduct->quantity >= ($CartProdcut->count + 1)) {
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return null;
+        } 
+    }
+    public function isDuplicate($Cart,$Product,$Color)
+    {
+        $CartProdcut = CartProduct::FindCartProduct($Product,$Color,$Cart)->first();
+        if($CartProdcut == null)
+        {
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    
 }

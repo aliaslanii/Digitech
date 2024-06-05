@@ -70,4 +70,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(AddressCustomer::class,'user_id');
     }
+    public function Customer() : hasOne
+    {
+        return $this->hasOne(Customer::class,'user_id');
+    }
+    public function getprofile($value)
+    {
+        return $value ?? 'images/User-image/defult.png';
+    }
 }
