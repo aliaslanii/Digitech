@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Admin\Locality\CityController;
 use App\Http\Controllers\Api\Admin\Locality\StateController;
 use App\Http\Controllers\Api\Admin\Product\ProductController;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Home\Address\AddressUserController;
 use App\Http\Controllers\Api\Home\Cart\CartHomeController;
 use App\Http\Controllers\Api\Home\Product\ProductController as ProductHomeController;
 use App\Http\Controllers\Api\Home\User\UserControllerapi;
@@ -30,6 +31,14 @@ Route::prefix('User')->group(function () {
     Route::put('Addres', [UserControllerapi::class, 'addres'])->middleware('auth:sanctum');
     Route::delete('destroy', [UserControllerapi::class, 'destroy']);
     Route::put('restore', [UserControllerapi::class, 'restore']);
+    Route::prefix('Addres')->middleware('auth:sanctum')->group(function () {
+        Route::get('index', [AddressUserController::class, 'index']);
+        Route::get('create', [AddressUserController::class, 'create']);
+        Route::post('store', [AddressUserController::class, 'store']);
+        Route::get('edit', [AddressUserController::class, 'edit']);
+        Route::put('update', [AddressUserController::class, 'update']);
+        Route::delete('destroy', [AddressUserController::class, 'destroy']);
+    });
 });
 Route::prefix('Product')->group(function () {
     Route::get('index', [ProductHomeController::class, 'index']);
@@ -42,6 +51,7 @@ Route::prefix('Cart')->middleware('auth:sanctum')->group(function () {
     Route::get('Added/Product', [CartHomeController::class, 'addedProduct']);
     Route::get('Decreased/Product', [CartHomeController::class, 'decreasedProduct']);
 });
+
 Route::prefix('admin')->middleware('auth:sanctum','role:Admin')->group(function () {
     Route::prefix('Category')->group(function () {
         Route::get('index', [CategoryController::class, 'index'])->middleware('role:Read');

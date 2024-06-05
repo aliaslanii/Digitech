@@ -65,5 +65,17 @@ class User extends Authenticatable
     public function Cart() : HasMany
     {
         return $this->hasMany(Cart::class,'user_id');
+    } 
+    public function AddressCustomer() : HasMany
+    {
+        return $this->hasMany(AddressCustomer::class,'user_id');
+    }
+    public function Customer() : hasOne
+    {
+        return $this->hasOne(Customer::class,'user_id');
+    }
+    public function getprofile($value)
+    {
+        return $value ?? 'images/User-image/defult.png';
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Cart;
+use App\Models\Customer;
 use App\Models\Role;
 use App\Models\RoleUser;
 use App\Models\User;
@@ -30,6 +31,9 @@ class DatabaseSeeder extends Seeder
         $wallet->inventory = 0;
         $wallet->status = true;
         $wallet->save();
+        $Customer = new Customer();
+        $Customer->user_id = 1;
+        $Customer->save();
         $Cart = new Cart();
         $Cart->user_id = 1;
         $Cart->is_pay = 0;

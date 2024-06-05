@@ -2765,6 +2765,346 @@
                 ]
             }
         },
+        "/api/User/Addres/index": {
+            "get": {
+                "tags": [
+                    "User Address"
+                ],
+                "summary": "Address User",
+                "operationId": "1c46e82c38e46a2f6369eb997b59f6b9",
+                "responses": {
+                    "200": {
+                        "description": "Data index successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/Addres/create": {
+            "get": {
+                "tags": [
+                    "User Address"
+                ],
+                "summary": "create a Addres User",
+                "operationId": "f58068088c76fb96c32a6c6198233f85",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count test Color Data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data create successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/Addres/store": {
+            "post": {
+                "tags": [
+                    "User Address"
+                ],
+                "summary": "insert a Addres User",
+                "operationId": "89825454cd27793c55843cc72ec5fdc9",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name Receiver Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "mobile Receiver Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "states_id",
+                        "in": "query",
+                        "description": "id states Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "cities_id",
+                        "in": "query",
+                        "description": "id city Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "zipCode",
+                        "in": "query",
+                        "description": "zipCode Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "plate",
+                        "in": "query",
+                        "description": "plate Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "unit",
+                        "in": "query",
+                        "description": "unit Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "id User Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data create successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/Addres/edit": {
+            "get": {
+                "tags": [
+                    "User Address"
+                ],
+                "summary": "create a Addres User",
+                "operationId": "ea4ca628e71731459c3f5c7d5a9bdb43",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Address Customer Data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data edit successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/Addres/update": {
+            "put": {
+                "tags": [
+                    "User Address"
+                ],
+                "summary": "update a Addres User",
+                "operationId": "efbb077ff79e7379c73e2b7452b0ad5e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Address Customer Data",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name Receiver Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "mobile Receiver Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "states_id",
+                        "in": "query",
+                        "description": "id states Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "cities_id",
+                        "in": "query",
+                        "description": "id city Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "zipCode",
+                        "in": "query",
+                        "description": "zipCode Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "plate",
+                        "in": "query",
+                        "description": "plate Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "unit",
+                        "in": "query",
+                        "description": "unit Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "id User Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data update successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/Addres/destroy": {
+            "delete": {
+                "tags": [
+                    "User Address"
+                ],
+                "summary": "Delete a Addres ",
+                "operationId": "dd236002880237131eb3c4534717e060",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Addres",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data destroy successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/Cart/checkout/Cart": {
             "get": {
                 "tags": [

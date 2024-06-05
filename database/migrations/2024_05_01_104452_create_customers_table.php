@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->foreignId('user_id')->constrained();
+            $table->date('birthday')->nullable();
+            $table->string('nationalcode')->nullable();
+            $table->enum('gender',['male','female'])->nullable();
+            $table->string('cardnumber')->nullable();
+            $table->string('shabanumber')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -13,6 +13,6 @@ class CartProduct extends Model
 
     public function scopeFindCartProduct(Builder $query,$product_id,$color_id,$cart_id): void
     {
-        $query->where('product_id',$product_id)->where('color_id',$color_id)->where('cart_id',$cart_id);
+        $query->where('product_id',$product_id)->where('color_id',$color_id)->where('cart_id',$cart_id) ?? null;
     }
 }

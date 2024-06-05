@@ -13,17 +13,16 @@ return new class extends Migration
     {
         Schema::create('address_customers', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
-            $table->string('Mobile');   
-            $table->text('Address');
+            $table->string('name');
+            $table->string('mobile');   
+            $table->text('address');
             $table->foreignId('states_id')->constrained();
             $table->foreignId('cities_id')->constrained();
-            $table->string('ZipCode'); 
-            $table->string('Plate'); 
-            $table->string('Unit')->nullable();        
+            $table->string('zipCode'); 
+            $table->string('plate'); 
+            $table->string('unit')->nullable();        
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('user_id');
-            $table->boolean('is_Delete')->default(0);
             $table->timestamps();
         });
     }

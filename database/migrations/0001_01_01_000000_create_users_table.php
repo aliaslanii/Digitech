@@ -20,11 +20,6 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('password');
-            $table->date('birthday')->nullable();
-            $table->string('nationalcode')->nullable();
-            $table->enum('gender',['male','female'])->nullable();
-            $table->string('cardnumber')->nullable();
-            $table->string('shabanumber')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
