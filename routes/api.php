@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\Admin\Product\ProductController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Home\Address\AddressUserController;
 use App\Http\Controllers\Api\Home\Cart\CartHomeController;
+use App\Http\Controllers\Api\Home\Order\OrderController;
 use App\Http\Controllers\Api\Home\Product\ProductController as ProductHomeController;
 use App\Http\Controllers\Api\Home\User\UserControllerapi;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,10 @@ Route::prefix('Cart')->middleware('auth:sanctum')->group(function () {
     Route::get('Add/Product', [CartHomeController::class, 'addProduct']);
     Route::get('Added/Product', [CartHomeController::class, 'addedProduct']);
     Route::get('Decreased/Product', [CartHomeController::class, 'decreasedProduct']);
+});
+Route::prefix('orders')->middleware('auth:sanctum')->group(function(){
+    Route::get('Payment', [OrderController::class,'payMent'])->name('payMent');
+    Route::post('Paydone', [OrderController::class,'payDone'])->name('payDone');
 });
 
 Route::prefix('admin')->middleware('auth:sanctum','role:Admin')->group(function () {

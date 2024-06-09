@@ -3134,6 +3134,16 @@
                 ],
                 "summary": "Show Products in Cart",
                 "operationId": "5fc8537cd3c5ebb5de38daf3bb66d5c6",
+                "parameters": [
+                    {
+                        "name": "address_id",
+                        "in": "query",
+                        "description": "id address",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Data index successfully"

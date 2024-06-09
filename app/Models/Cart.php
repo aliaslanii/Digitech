@@ -22,4 +22,8 @@ class Cart extends Model
                     ->withPivot('count')
                     ->withPivot('color_id');
     }
+    public function cartUser()
+    {
+        return $this->where('is_pay', 0);
+    }
 }
