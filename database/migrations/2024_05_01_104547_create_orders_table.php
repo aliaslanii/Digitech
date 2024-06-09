@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->dateTime('order_date');
+            $table->string('mobile');
+            $table->string('ordernumber');
             $table->double('total_price');
-            $table->string('status')->nullable();
+            $table->enum('status',['sent','canceled','preparing','unpaid','paid'])->nullable();
             $table->boolean('is_payed')->default(0);
             $table->text('description')->nullable();
             $table->timestamps();

@@ -8,7 +8,7 @@ use App\Models\ColorProduct;
 use App\Models\Discount;
 use App\Models\Product;
 use Carbon\Carbon;
-
+ 
 class HomeProduct
 {
     protected $HomeColor;
@@ -78,15 +78,20 @@ class HomeProduct
         return Color::find($colorId);
     }
 
-    public function getProductPrice($Product)
+    public function getProductPrice($Product,$Color) 
     {
-        $ColorProduct = ColorProduct::where('color_id', $Product->pivot->color_id)
-            ->where('product_id', $Product->id)
-            ->first();
-        if ($ColorProduct) {
-            return $ColorProduct->price;
+        $ColorProduct = ColorProduct::where('color_id', $Color)
+        ->where('product_id', $Product->id)
+        ->first();
+        if($this->getProductDiscount($Product) != false)
+        {
+            $Discount = ($ColorProduct->price * $this->getProductDiscount($Product)["discount_amount"]) / 100;
+            return $ColorProduct->price - $Discount;
+        }else{
+            if ($ColorProduct) {
+                return $ColorProduct->price;
+            }
         }
-        return null;
     }
     public function getMinDetailProduct($Product)
     {
@@ -112,7 +117,7 @@ class HomeProduct
             $EndTime = Carbon::parse($Product->discount->endTime);
             if ($nowtime->gte($StartTime) == true && $nowtime->gte($EndTime) == false) {
                 $discount = [
-                    'discount amount' => $Product->discount->discount_amount
+                    'discount_amount' => $Product->discount->discount_amount
                 ];
                 return $discount;
             } else {
@@ -156,7 +161,5 @@ class HomeProduct
         }else{
             return false;
         }
-        
-    }
-    
+    }     
 }
